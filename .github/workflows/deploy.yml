@@ -7,19 +7,23 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Get code
         uses: actions/checkout@v3
       - name: Load & cache dependencies
-        uses: ./.github/actions/cached-deps/action.yml
+        uses: ./.github/actions/cached-deps
       - name: Lint code
         run: npm run lint
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Get code
         uses: actions/checkout@v3
       - name: Load & cache dependencies
-        uses: ./.github/actions/cached-deps/action.yml
+        uses: ./.github/actions/cached-deps
       - name: Test code
         id: run-tests
         run: npm run test
@@ -33,10 +37,12 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Get code
         uses: actions/checkout@v3
       - name: Load & cache dependencies
-        uses: ./.github/actions/cached-deps/action.yml
+        uses: ./.github/actions/cached-deps
       - name: Build website
         run: npm run build
       - name: Upload artifacts
@@ -48,6 +54,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Get code
         uses: actions/checkout@v3
       - name: Get build artifacts
