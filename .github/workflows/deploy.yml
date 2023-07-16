@@ -69,7 +69,7 @@ jobs:
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        with:
-          bucket: ghap-custom-action-hosting
-          dist-folder: ./dist
-          #bucket-region: us-east-2
+          with:
+            bucket: ghap-custom-action-hosting
+            dist-folder: ./dist
+            #bucket-region: us-east-2
