@@ -51,24 +51,24 @@ jobs:
         with:
           name: dist-files
           path: dist
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/checkout@v3
-        - name: Get build artifacts
-          uses: actions/download-artifact@v3
-          with:
-            name: dist-files
-            path: ./dist
-        - name: Output contents
-          run: ls
-        - name: Deploy site
-          run: ./.github/actions/deploy-s3-javascript
-          env:
-            AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          with:
-            bucket: ghap-custom-action-hosting
-            dist-folder: ./dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+          path: ./dist
+      - name: Output contents
+        run: ls
+      - name: Deploy site
+        run: ./.github/actions/deploy-s3-javascript
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          bucket: ghap-custom-action-hosting
+          dist-folder: ./dist
