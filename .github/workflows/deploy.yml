@@ -65,6 +65,7 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
+        id: deploy
         run: ./.github/actions/deploy-s3-javascript
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
@@ -72,3 +73,7 @@ jobs:
         with:
           bucket: ghap-custom-action-hosting
           dist-folder: ./dist
+      - name: Output
+        run: | 
+          echo "Live URL: ${{ steps.deploy.outputs.website-url }}"
+
