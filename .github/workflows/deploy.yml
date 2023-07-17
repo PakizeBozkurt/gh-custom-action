@@ -66,10 +66,10 @@ jobs:
         run: ls
       - name: Deploy site
         id: deploy
-        run: ./.github/actions/deploy-s3-javascript
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: ./.github/actions/deploy-s3-javascript  
         with:
           bucket: gha-custom-action-hosting
           dist-folder: ./dist
