@@ -14,6 +14,13 @@ inputs:
 outputs:
   website-url:
     description: 'The URL of the deployed website.'
+name: 'deploy-s3-docker'
+description: 'Description of your action'
+inputs:
+  image:
+    description: 'Docker image to deploy'
+    required: true
+    default: 'your-default-docker-image' 
 runs:
   using: 'docker'
   main: 'Dockerfile'  
