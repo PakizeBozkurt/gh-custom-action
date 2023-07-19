@@ -20,7 +20,7 @@ inputs:
   image:
     description: 'Docker image to deploy'
     required: true
-    default: 'your-default-docker-image' 
+    default: 'my-default-docker-image' 
 runs:
   using: 'docker'
   main: 'Dockerfile'  
